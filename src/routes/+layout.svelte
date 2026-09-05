@@ -20,6 +20,15 @@
   let scrolled = false;
   let mobileOpen = false;
   let shopOpen = false;
+  let shopTimer = null;
+
+  function openShop() {
+    if (shopTimer) { clearTimeout(shopTimer); shopTimer = null; }
+    shopOpen = true;
+  }
+  function closeShop() {
+    shopTimer = setTimeout(() => { shopOpen = false; }, 150);
+  }
 
   onMount(() => {
     const fn = () => scrolled = window.scrollY > 20;
@@ -100,8 +109,8 @@
 
       <!-- Shop mega menu -->
       <div class="relative" role="none"
-        on:mouseenter={() => shopOpen=true}
-        on:mouseleave={() => shopOpen=false}>
+        on:mouseenter={openShop}
+        on:mouseleave={closeShop}>
         <button class="px-4 py-2 text-sm rounded-lg transition-colors flex items-center gap-1"
           style="color:{isActive('/shop') ? 'var(--gold)' : 'var(--text-2)'}">
           Shop
@@ -110,7 +119,11 @@
           </svg>
         </button>
         {#if shopOpen}
-          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[480px] card p-5 shadow-2xl">
+          <!-- Invisible bridge fills the gap between button and dropdown so mouse move doesn't close it -->
+          <div class="absolute top-full left-0 right-0 h-3" on:mouseenter={openShop} on:mouseleave={closeShop}></div>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[480px] card p-5 shadow-2xl"
+            on:mouseenter={openShop}
+            on:mouseleave={closeShop}>
             <div class="grid grid-cols-2 gap-2">
               {#each shopCategories as cat}
                 <a href={cat.href} class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#1a1a1a] transition-colors group">
