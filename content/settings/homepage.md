@@ -68,19 +68,7 @@ features:
   - icon: /uploads/vizan variya.png
     title: Support
     desc: We are always here to help
-testimonials:
-  - name: Vizan Patel
-    role: Software Engineer
-    text: Got my dream job using the ATS resume template. The formatting was perfect!
-    stars: 5
-  - name: Rahul Gupta
-    role: Business Owner
-    text: Excel templates saved me hours every week. Super professional.
-    stars: 5
-  - name: Ananya Singh
-    role: Freelancer
-    text: Eco planner helped me organise my entire life. Beautiful design!
-    stars: 5
+testimonials: []
 seoTitle: ''
 seoDesc: ''
 ---
