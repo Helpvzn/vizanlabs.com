@@ -18,10 +18,10 @@ stats:
 categoriesTitle: Browse by Category
 categoriesTagline: Find exactly what you need
 categories:
-  - name: Resume Templates
-    icon: /uploads/premium.png
-    href: /shop?category=Resume+Templates
-    desc: ATS-friendly professional designs
+  - name: AI Prompts
+    icon: ✨
+    href: /shop?category=AI+Prompts
+    desc: Power your workflow with AI
   - name: Excel Templates
     icon: /uploads/excel.png
     href: /shop?category=Excel+Templates
@@ -43,7 +43,7 @@ customizeTitle: Need a Custom Template?
 customizeSubtitle: Get your resume or spreadsheet customized by our experts. Professional, fast, and affordable.
 customizePrice: $2.99
 customizeCtaText: Get Customized Now →
-customizeCtaLink: mailto:support@freeresumebuilder.co?subject=Custom%20Resume%20Request&body=Hi,%20I%20want%20a%20custom%20template
+customizeCtaLink: mailto:support@vizanlabs.com?subject=Custom%20Request&body=Hi,%20I%20want%20a%20custom%20template
 customizeServices:
   - icon: /uploads/premium.png
     title: Custom Resume Design

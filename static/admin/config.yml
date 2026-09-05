@@ -30,9 +30,9 @@ collections:
       - label: "Featured Only"
         field: featured
         pattern: true
-      - label: "Resume Templates"
+      - label: "AI Prompts"
         field: category
-        pattern: "Resume Templates"
+        pattern: "AI Prompts"
       - label: "Excel Templates"
         field: category
         pattern: "Excel Templates"
@@ -42,13 +42,16 @@ collections:
       - label: "Habit Trackers"
         field: category
         pattern: "Habit Trackers"
+      - label: "Business Kits"
+        field: category
+        pattern: "Business Kits"
     fields:
       - { label: "Product Title", name: title, widget: string }
-      - { label: "URL Slug", name: slug, widget: string, hint: "e.g. ats-resume-2025 (lowercase, hyphens only)" }
+      - { label: "URL Slug", name: slug, widget: string, hint: "e.g. ai-prompts-pack (lowercase, hyphens only)" }
       - label: "Category"
         name: category
-        widget: select
-        options: ["Resume Templates","Excel Templates","Eco Planners","Habit Trackers","Business Kits"]
+        widget: string
+        hint: "Type any category name, e.g. AI Prompts, Excel Templates, Eco Planners, Habit Trackers, Business Kits"
       - { label: "Price (INR ₹)", name: price, widget: number, value_type: float }
       - { label: "Original Price (for strikethrough)", name: originalPrice, widget: number, value_type: float, required: false }
       - { label: "Short Description", name: shortDescription, widget: string, hint: "1-2 lines for product cards" }
@@ -258,16 +261,16 @@ collections:
               - { label: Label, name: label, widget: string }
           - { label: "Categories Section Title", name: categoriesTitle, widget: string, default: "Browse by Category" }
           - { label: "Categories Section Tagline", name: categoriesTagline, widget: string, default: "Find exactly what you need" }
-          - label: "Product Categories"
+          - label: "🗂️ Nav & Shop Categories"
             name: categories
             widget: list
             required: false
-            hint: "Categories shown on homepage"
+            hint: "✅ Yahan se categories add, rename, remove karo — yahi nav dropdown aur homepage mein dikhengi"
             fields:
-              - { label: "Name", name: name, widget: string }
-              - { label: "Icon/Image", name: icon, widget: image, hint: "Upload an icon or image for this category" }
-              - { label: "Link", name: href, widget: string, hint: "e.g. /shop?category=Resume+Templates" }
-              - { label: "Description", name: desc, widget: string, required: false, hint: "Used in the header dropdown menu" }
+              - { label: "Category Name", name: name, widget: string, hint: "e.g. AI Prompts, Excel Templates" }
+              - { label: "Emoji or Icon URL", name: icon, widget: string, hint: "Emoji type karo (e.g. ✨ 📊 🌿) ya image URL paste karo" }
+              - { label: "Shop Link", name: href, widget: string, hint: "e.g. /shop?category=AI+Prompts (spaces ko + se replace karo)" }
+              - { label: "Short Description", name: desc, widget: string, required: false, hint: "Dropdown mein description" }
           - { label: "Show Customize Services Section", name: customizeEnabled, widget: boolean, default: true }
           - { label: "Customize Section Title", name: customizeTitle, widget: string, default: "Need a Custom Template?", required: false }
           - { label: "Customize Section Subtitle", name: customizeSubtitle, widget: text, required: false }

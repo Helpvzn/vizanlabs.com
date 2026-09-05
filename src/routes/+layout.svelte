@@ -50,7 +50,7 @@
   $: shopCategories = hpCategories.length > 0 ? hpCategories.map(c => ({
     icon: c.icon, label: c.name, href: c.href, desc: c.desc || ''
   })) : [
-    { icon: '📄', label: 'Resume Templates', href: '/shop?category=Resume+Templates', desc: 'ATS-friendly professional designs' },
+    { icon: '✨', label: 'AI Prompts',      href: '/shop?category=AI+Prompts',      desc: 'Power your workflow with AI' },
     { icon: '📊', label: 'Excel Templates',  href: '/shop?category=Excel+Templates',  desc: 'Business, finance & tracking' },
     { icon: '🌿', label: 'Eco Planners',     href: '/shop?category=Eco+Planners',     desc: 'Sustainable life planning' },
     { icon: '✅', label: 'Habit Trackers',   href: '/shop?category=Habit+Trackers',   desc: 'Build better routines' },
