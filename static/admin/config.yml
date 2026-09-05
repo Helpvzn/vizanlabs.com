@@ -1,0 +1,331 @@
+backend:
+  name: github
+  repo: Helpvzn/premium.freeresumebuilder
+  branch: main
+  base_url: https://premium.freeresumebuilder.co
+  auth_endpoint: /api/auth/callback
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+site_url: https://premium.freeresumebuilder.co
+logo_url: /uploads/logo.svg
+show_preview_links: true
+
+collections:
+
+  # ================================================
+  # PRODUCTS
+  # ================================================
+  - name: products
+    label: "🛍️ Products"
+    label_singular: "Product"
+    folder: content/products
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    preview_path: "/shop/{{slug}}"
+    identifier_field: title
+    sortable_fields: [title, price, category, createdAt]
+    view_filters:
+      - label: "Featured Only"
+        field: featured
+        pattern: true
+      - label: "Resume Templates"
+        field: category
+        pattern: "Resume Templates"
+      - label: "Excel Templates"
+        field: category
+        pattern: "Excel Templates"
+      - label: "Eco Planners"
+        field: category
+        pattern: "Eco Planners"
+      - label: "Habit Trackers"
+        field: category
+        pattern: "Habit Trackers"
+    fields:
+      - { label: "Product Title", name: title, widget: string }
+      - { label: "URL Slug", name: slug, widget: string, hint: "e.g. ats-resume-2025 (lowercase, hyphens only)" }
+      - label: "Category"
+        name: category
+        widget: select
+        options: ["Resume Templates","Excel Templates","Eco Planners","Habit Trackers","Business Kits"]
+      - { label: "Price (INR ₹)", name: price, widget: number, value_type: float }
+      - { label: "Original Price (for strikethrough)", name: originalPrice, widget: number, value_type: float, required: false }
+      - { label: "Short Description", name: shortDescription, widget: string, hint: "1-2 lines for product cards" }
+      - { label: "Full Description", name: body, widget: markdown }
+      - label: "Thumbnail Image"
+        name: thumbnail
+        widget: image
+        required: false
+        media_folder: "/static/uploads/products"
+        public_folder: "/uploads/products"
+      - label: "Image Aspect Ratio"
+        name: imageAspectRatio
+        widget: select
+        default: "3/4"
+        options:
+          - { label: "Resume / Portrait (3:4)", value: "3/4" }
+          - { label: "Excel / Landscape (4:3)", value: "4:3" }
+          - { label: "Square (1:1)", value: "1/1" }
+          - { label: "Widescreen (16:9)", value: "16/9" }
+          - { label: "Tall (2:3)", value: "2/3" }
+          - { label: "Natural (Auto)", value: "auto" }
+      - label: "Gallery Images (multiple previews)"
+        name: gallery
+        widget: list
+        required: false
+        field: { label: Image, name: image, widget: image, media_folder: "/static/uploads/products", public_folder: "/uploads/products" }
+      - { label: "Lemon Squeezy Checkout Link", name: buyUrl, widget: string, required: false, hint: "Paste the full LS checkout link: https://freeresumebuilder.lemonsqueezy.com/checkout/buy/..." }
+      - { label: "Free Preview File URL (R2)", name: previewFileUrl, widget: string, required: false, hint: "R2 link for free sample download" }
+      - label: "File Format"
+        name: fileFormat
+        widget: select
+        required: false
+        options: ["DOCX + PDF","XLSX","PDF","DOCX","ZIP (Multiple Formats)","Notion Template"]
+      - { label: "File Size", name: fileSize, widget: string, required: false, hint: "e.g. 2.4 MB" }
+      - label: "Requirements"
+        name: requirements
+        widget: list
+        required: false
+        field: { label: Requirement, name: item, widget: string }
+      - label: "Badge"
+        name: badge
+        widget: select
+        required: false
+        options:
+          - { label: "None", value: "" }
+          - { label: "🆕 New", value: "new" }
+          - { label: "🔥 Sale", value: "sale" }
+          - { label: "🆓 Free", value: "free" }
+          - { label: "⭐ Bestseller", value: "bestseller" }
+      - { label: "Featured on Homepage", name: featured, widget: boolean, default: false }
+      - { label: "Published", name: published, widget: boolean, default: true }
+      - { label: "SEO Title", name: seoTitle, widget: string, required: false }
+      - { label: "SEO Description", name: seoDescription, widget: text, required: false }
+      - { label: "Created At", name: createdAt, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, required: false }
+
+  # ================================================
+  # BLOG POSTS
+  # ================================================
+  - name: blog
+    label: "📝 Blog Posts"
+    label_singular: "Blog Post"
+    folder: content/blog
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    preview_path: "/blog/{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Slug", name: slug, widget: string }
+      - { label: "Excerpt", name: excerpt, widget: text, hint: "Short summary for listings" }
+      - { label: "Content", name: body, widget: markdown }
+      - label: "Cover Image"
+        name: coverImage
+        widget: image
+        required: false
+        media_folder: "/static/uploads/blog"
+        public_folder: "/uploads/blog"
+      - { label: "Author", name: author, widget: string, default: "Admin" }
+      - label: "Category"
+        name: category
+        widget: select
+        options: ["Resume Tips","Career Advice","Productivity","Excel Guides","Planning & Habits","Business","Template Tutorials"]
+      - { label: "Tags (comma separated)", name: tags, widget: list, required: false }
+      - { label: "Publish Date", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Read Time", name: readTime, widget: string, required: false, hint: "e.g. 5 min read" }
+      - { label: "Published", name: published, widget: boolean, default: true }
+      - { label: "Featured", name: featured, widget: boolean, default: false }
+      - { label: "SEO Title", name: seoTitle, widget: string, required: false }
+      - { label: "SEO Description", name: seoDescription, widget: text, required: false }
+
+  # ================================================
+  # SITE SETTINGS (everything in one place)
+  # ================================================
+  - name: settings
+    label: "⚙️ Site Settings"
+    delete: false
+    editor: { preview: false }
+    files:
+
+      # --- GENERAL ---
+      - label: "🌐 General (Logo, Name, Colors)"
+        name: site
+        file: content/settings/site.md
+        fields:
+          - { label: "Site Name", name: siteName, widget: string }
+          - { label: "Tagline", name: tagline, widget: string }
+          - label: "Logo"
+            name: logo
+            widget: image
+            required: false
+            hint: "Upload your logo (SVG or PNG, max 200x50px)"
+          - label: "Favicon"
+            name: favicon
+            widget: image
+            required: false
+          - { label: "Primary Color (Brand Gold)", name: primaryColor, widget: color, default: "#d4891a", allowInput: true, hint: "This changes the brand color everywhere on the site" }
+          - { label: "Contact Email", name: contactEmail, widget: string }
+          - { label: "Support Email", name: supportEmail, widget: string, required: false }
+          - { label: "WhatsApp Number", name: whatsapp, widget: string, required: false }
+
+      # --- ANNOUNCEMENT BAR ---
+      - label: "📢 Announcement Bar (top banner)"
+        name: announcement
+        file: content/settings/announcement.md
+        fields:
+          - { label: "Enable Announcement Bar", name: enabled, widget: boolean, default: false }
+          - { label: "Announcement Text", name: text, widget: string, required: false, hint: "e.g. 🎉 Sale! Use code SAVE20" }
+          - { label: "Link (where to go on click)", name: link, widget: string, required: false }
+          - { label: "Background Color", name: bgColor, widget: color, default: "#d4891a", required: false }
+
+      # --- HEADER ---
+      - label: "🗂️ Header & Navigation"
+        name: header
+        file: content/settings/header.md
+        fields:
+          - { label: "Show Search Icon", name: showSearch, widget: boolean, default: true }
+          - { label: "Show Cart Icon", name: showCart, widget: boolean, default: true }
+          - label: "Extra Nav Links"
+            name: navLinks
+            widget: list
+            required: false
+            hint: "Add custom links to the navigation"
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: href, widget: string }
+              - { label: "Open in new tab", name: external, widget: boolean, default: false }
+
+      # --- FOOTER ---
+      - label: "🦶 Footer"
+        name: footer
+        file: content/settings/footer.md
+        fields:
+          - { label: "Footer Tagline", name: tagline, widget: string, required: false }
+          - { label: "Copyright Text", name: copyright, widget: string, default: "© 2025 Premium Templates. All rights reserved." }
+          - { label: "Show Newsletter Signup", name: showNewsletter, widget: boolean, default: true }
+          - label: "Social Links"
+            name: social
+            widget: object
+            required: false
+            fields:
+              - { label: Twitter URL, name: twitter, widget: string, required: false }
+              - { label: Instagram URL, name: instagram, widget: string, required: false }
+              - { label: LinkedIn URL, name: linkedin, widget: string, required: false }
+              - { label: YouTube URL, name: youtube, widget: string, required: false }
+          - label: "Products Links"
+            name: productsLinks
+            widget: list
+            required: false
+            fields:
+              - { label: "Label", name: label, widget: string }
+              - { label: "Link URL", name: href, widget: string }
+          - label: "Company Links"
+            name: companyLinks
+            widget: list
+            required: false
+            fields:
+              - { label: "Label", name: label, widget: string }
+              - { label: "Link URL", name: href, widget: string }
+          - label: "Legal Links"
+            name: legalLinks
+            widget: list
+            required: false
+            fields:
+              - { label: "Label", name: label, widget: string }
+              - { label: "Link URL", name: href, widget: string }
+
+      # --- HOMEPAGE ---
+      - label: "🏠 Homepage Content"
+        name: homepage
+        file: content/settings/homepage.md
+        fields:
+          - { label: "Hero Headline", name: heroHeadline, widget: string }
+          - { label: "Hero Subheadline", name: heroSubheadline, widget: text }
+          - { label: "Headline Color", name: headlineColor, widget: color, default: "#ffffff", required: false }
+          - { label: "Subheadline Color", name: subheadlineColor, widget: color, default: "#999999", required: false }
+          - { label: "Primary Button Text", name: heroCta, widget: string, default: "Browse Templates →" }
+          - { label: "Primary Button Link", name: heroCtaLink, widget: string, default: "/shop" }
+          - { label: "Show Stats Bar", name: showStats, widget: boolean, default: true }
+          - label: "Stats"
+            name: stats
+            widget: list
+            required: false
+            hint: "Numbers shown below the hero"
+            fields:
+              - { label: Number, name: number, widget: string }
+              - { label: Label, name: label, widget: string }
+          - { label: "Categories Section Title", name: categoriesTitle, widget: string, default: "Browse by Category" }
+          - { label: "Categories Section Tagline", name: categoriesTagline, widget: string, default: "Find exactly what you need" }
+          - label: "Product Categories"
+            name: categories
+            widget: list
+            required: false
+            hint: "Categories shown on homepage"
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Icon/Image", name: icon, widget: image, hint: "Upload an icon or image for this category" }
+              - { label: "Link", name: href, widget: string, hint: "e.g. /shop?category=Resume+Templates" }
+              - { label: "Description", name: desc, widget: string, required: false, hint: "Used in the header dropdown menu" }
+          - { label: "Show Customize Services Section", name: customizeEnabled, widget: boolean, default: true }
+          - { label: "Customize Section Title", name: customizeTitle, widget: string, default: "Need a Custom Template?", required: false }
+          - { label: "Customize Section Subtitle", name: customizeSubtitle, widget: text, required: false }
+          - { label: "Customize Price (e.g. $2.99)", name: customizePrice, widget: string, default: "$2.99", required: false }
+          - { label: "Customize CTA Button Text", name: customizeCtaText, widget: string, default: "Get Customized Now →", required: false }
+          - { label: "Customize CTA Button Link", name: customizeCtaLink, widget: string, default: "mailto:support@freeresumebuilder.co", required: false }
+          - label: "Customize Services List"
+            name: customizeServices
+            widget: list
+            required: false
+            hint: "Service cards shown in the Customize section"
+            fields:
+              - { label: "Icon/Image", name: icon, widget: image, hint: "Upload an icon or image" }
+              - { label: "Title", name: title, widget: string }
+              - { label: "Description", name: desc, widget: string }
+          - { label: "Features Section Title", name: featuresTitle, widget: string, default: "Why Choose Us?", required: false }
+          - label: "Features (Why Choose Us)"
+            name: features
+            widget: list
+            required: false
+            hint: "Cards shown in the Why Choose Us section"
+            fields:
+              - { label: "Icon/Image", name: icon, widget: image, hint: "Upload an icon or image" }
+              - { label: "Title", name: title, widget: string }
+              - { label: "Description", name: desc, widget: string }
+          - label: "Testimonials"
+            name: testimonials
+            widget: list
+            required: false
+            hint: "Customer reviews shown on homepage"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Role, name: role, widget: string }
+              - { label: Review Text, name: text, widget: text }
+              - { label: "Stars (1-5)", name: stars, widget: number, min: 1, max: 5, default: 5 }
+          - { label: "SEO Title (Homepage)", name: seoTitle, widget: string, required: false }
+          - { label: "SEO Description (Homepage)", name: seoDesc, widget: text, required: false }
+
+      # --- SEO ---
+      - label: "🔍 SEO & Analytics"
+        name: seo
+        file: content/settings/seo.md
+        fields:
+          - { label: "Default Meta Title", name: defaultTitle, widget: string }
+          - { label: "Default Meta Description", name: defaultDescription, widget: text }
+          - label: "OG Image (social share)"
+            name: ogImage
+            widget: image
+            required: false
+            hint: "1200x630px shown when shared on social media"
+          - { label: "Google Analytics ID", name: gaId, widget: string, required: false, hint: "e.g. G-XXXXXXXXXX" }
+          - { label: "Facebook Pixel ID", name: fbPixelId, widget: string, required: false }
+
+      # --- LEGAL ---
+      - label: "⚖️ Legal Policies"
+        name: legal
+        file: content/settings/legal.md
+        fields:
+          - { label: "Privacy Policy Content", name: privacyContent, widget: text, required: false }
+          - { label: "Terms of Service Content", name: termsContent, widget: text, required: false }
+          - { label: "Refund Policy Content", name: refundContent, widget: text, required: false }

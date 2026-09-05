@@ -1,0 +1,7 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+
+/admin/*
+  X-Robots-Tag: noindex
+  Cache-Control: no-store
