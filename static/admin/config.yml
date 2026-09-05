@@ -1,13 +1,13 @@
 backend:
   name: github
-  repo: Helpvzn/premium.freeresumebuilder
+  repo: Helpvzn/vizanlabs.com
   branch: main
-  base_url: https://premium.freeresumebuilder.co
+  base_url: https://vizanlabs.com
   auth_endpoint: /api/auth/callback
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
-site_url: https://premium.freeresumebuilder.co
+site_url: https://vizanlabs.com
 logo_url: /uploads/logo.svg
 show_preview_links: true
 

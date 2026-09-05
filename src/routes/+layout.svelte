@@ -278,7 +278,7 @@
 
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-xs" style="color:var(--text-3)">
-        {footer.copyright || `© ${year} ${site.siteName || 'Premium Templates'} · premium.freeresumebuilder.co`}
+        {footer.copyright || `© ${year} ${site.siteName || 'Vizan Labs'} · vizanlabs.com`}
       </p>
       <!-- Social links (CMS controlled) -->
       <div class="flex items-center gap-3">

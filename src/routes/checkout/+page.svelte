@@ -8,7 +8,7 @@
     if (!items.length) return;
     const id = items[0].lemonsqueezyId;
     if (id) {
-      window.location.href = `https://freeresumebuilder.lemonsqueezy.com/checkout/buy/${id}?checkout[success_url]=https://premium.freeresumebuilder.co/success`;
+      window.location.href = `https://freeresumebuilder.lemonsqueezy.com/checkout/buy/${id}?checkout[success_url]=https://vizanlabs.com/success`;
     } else {
       processing = false;
       alert('No checkout link configured. Add Lemon Squeezy Variant ID in CMS.');
