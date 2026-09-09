@@ -51,7 +51,7 @@ collections:
       - label: "Category"
         name: category
         widget: string
-        hint: "Type any category name, e.g. AI Prompts, Excel Templates, Eco Planners, Habit Trackers, Business Kits"
+        hint: "e.g. AI Prompts | Excel Templates | Eco Planners | Habit Trackers | Business Kits | Kids & Preschool | Tweens & Teens | Adults | Seniors | Education & Learning | Planners & Organizers | Games & Activities | Coloring & Puzzles | Finance & Budgeting | Wedding & Events | Travel | Health & Fitness | Business & Work | Journals & Self-Care | Seasonal & Holidays"
       - { label: "Price (INR ₹)", name: price, widget: number, value_type: float }
       - { label: "Original Price (for strikethrough)", name: originalPrice, widget: number, value_type: float, required: false }
       - { label: "Short Description", name: shortDescription, widget: string, hint: "1-2 lines for product cards" }

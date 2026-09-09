@@ -38,6 +38,66 @@ categories:
     icon: 💼
     href: /shop?category=Business+Kits
     desc: Complete business packs
+  - name: Kids & Preschool
+    icon: 🧒
+    href: /shop?category=Kids+%26+Preschool
+    desc: Fun learning for little ones
+  - name: Tweens & Teens
+    icon: 🎒
+    href: /shop?category=Tweens+%26+Teens
+    desc: Perfect for middle & high school
+  - name: Adults
+    icon: 👤
+    href: /shop?category=Adults
+    desc: Templates designed for adults
+  - name: Seniors
+    icon: 🌟
+    href: /shop?category=Seniors
+    desc: Simple & easy-to-use resources
+  - name: Education & Learning
+    icon: 📚
+    href: /shop?category=Education+%26+Learning
+    desc: Tools to boost learning
+  - name: Planners & Organizers
+    icon: 📅
+    href: /shop?category=Planners+%26+Organizers
+    desc: Stay organised every day
+  - name: Games & Activities
+    icon: 🎮
+    href: /shop?category=Games+%26+Activities
+    desc: Fun games & activity sheets
+  - name: Coloring & Puzzles
+    icon: 🎨
+    href: /shop?category=Coloring+%26+Puzzles
+    desc: Creative coloring & puzzles
+  - name: Finance & Budgeting
+    icon: 💰
+    href: /shop?category=Finance+%26+Budgeting
+    desc: Manage money smarter
+  - name: Wedding & Events
+    icon: 💍
+    href: /shop?category=Wedding+%26+Events
+    desc: Plan your perfect event
+  - name: Travel
+    icon: ✈️
+    href: /shop?category=Travel
+    desc: Travel planners & itineraries
+  - name: Health & Fitness
+    icon: 💪
+    href: /shop?category=Health+%26+Fitness
+    desc: Wellness & fitness trackers
+  - name: Business & Work
+    icon: 🏢
+    href: /shop?category=Business+%26+Work
+    desc: Professional business tools
+  - name: Journals & Self-Care
+    icon: 📓
+    href: /shop?category=Journals+%26+Self-Care
+    desc: Mindfulness & self-care journals
+  - name: Seasonal & Holidays
+    icon: 🎄
+    href: /shop?category=Seasonal+%26+Holidays
+    desc: Holiday & seasonal printables
 customizeEnabled: true
 customizeTitle: Need a Custom Template?
 customizeSubtitle: Get your resume or spreadsheet customized by our experts. Professional, fast, and affordable.
