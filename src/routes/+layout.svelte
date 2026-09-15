@@ -260,9 +260,10 @@
       <div>
         <h3 class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:var(--text-3)">Products</h3>
         <ul class="space-y-2.5">
-          {#each [['Resume Templates','/shop?category=Resume+Templates'],['Excel Templates','/shop?category=Excel+Templates'],['Eco Planners','/shop?category=Eco+Planners'],['Habit Trackers','/shop?category=Habit+Trackers'],['All Products','/shop']] as [label,href]}
-            <li><a {href} class="text-sm transition-colors hover:text-[var(--gold)]" style="color:var(--text-3)">{label}</a></li>
+          {#each shopCategories.slice(0, 8) as cat}
+            <li><a href={cat.href} class="text-sm transition-colors hover:text-[var(--gold)]" style="color:var(--text-3)">{cat.label}</a></li>
           {/each}
+          <li><a href="/shop" class="text-sm transition-colors hover:text-[var(--gold)]" style="color:var(--gold); font-weight:600">All Products →</a></li>
         </ul>
       </div>
 

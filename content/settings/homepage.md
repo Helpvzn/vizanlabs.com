@@ -98,6 +98,10 @@ categories:
     icon: 🎄
     href: /shop?category=Seasonal+%26+Holidays
     desc: Holiday & seasonal printables
+  - name: Dharmik Books PDF
+    icon: 🕉️
+    href: /shop?category=Dharmik+Books+PDF
+    desc: Bhagwano ki dharmik books & PDF
 customizeEnabled: true
 customizeTitle: Need a Custom Template?
 customizeSubtitle: Get your resume or spreadsheet customized by our experts. Professional, fast, and affordable.
