@@ -103,21 +103,21 @@ categories:
     href: /shop?category=Dharmik+Books+PDF
     desc: Bhagwano ki dharmik books & PDF
 customizeEnabled: true
-customizeTitle: Need a Custom Template?
-customizeSubtitle: Get your resume or spreadsheet customized by our experts. Professional, fast, and affordable.
-customizePrice: $2.99
-customizeCtaText: Get Customized Now →
-customizeCtaLink: mailto:support@vizanlabs.com?subject=Custom%20Request&body=Hi,%20I%20want%20a%20custom%20template
+customizeTitle: Vizan Labs — Your Digital Store
+customizeSubtitle: Premium printable products, AI Prompt packs, Dharmik PDFs, planners, trackers and more — all in one place. Instant download, lifetime access.
+customizePrice: ₹99
+customizeCtaText: Explore All Products →
+customizeCtaLink: /shop
 customizeServices:
-  - icon: /uploads/premium.png
-    title: Custom Resume Design
-    desc: We customize any resume template with your details and branding
-  - icon: /uploads/excel.png
-    title: Excel Sheet Setup
-    desc: We configure your Excel template with your data and formulas
-  - icon: ⚡
-    title: Fast Delivery
-    desc: Get your customized file within 24 hours via email
+  - icon: ✨
+    title: AI Prompts & Tools
+    desc: Ready-to-use AI prompt packs to supercharge your productivity and creativity
+  - icon: 🕉️
+    title: Dharmik Books PDF
+    desc: Spiritual & religious books in PDF format — Bhagwad Gita, Chalisa, and more
+  - icon: 📅
+    title: Planners & Trackers
+    desc: Daily planners, habit trackers, budgeting sheets — beautifully designed & printable
 featuresTitle: Why Choose Us?
 features:
   - icon: ⚡
