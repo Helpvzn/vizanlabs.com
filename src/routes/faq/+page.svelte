@@ -1,14 +1,14 @@
 <script>
   let open = null;
   const faqs = [
-    ['How do I download after purchase?','After payment you get an email with a download link from Lemon Squeezy. Downloads are instant.'],
+    ['How do I download after purchase?','After payment you get an instant download link on screen. Click the Download button to save your PDF.'],
     ['What file formats?','DOCX + PDF for resumes, XLSX for Excel templates, PDF for planners. Check each product page.'],
     ['Can I use commercially?','Standard license is personal use only. Contact us for commercial licensing.'],
     ['Do I need special software?','Word 2016+ or Google Docs for DOCX. Excel 2016+ or Google Sheets for XLSX. Any PDF reader for PDFs.'],
-    ['What is your refund policy?','30-day money-back guarantee, no questions asked. Email support@freeresumebuilder.co'],
+    ['What is your refund policy?','30-day money-back guarantee, no questions asked. Email support@vizanlabs.com'],
     ['Will I get updates?','Yes! All purchases include lifetime access and free updates.'],
     ['Are resumes ATS-friendly?','Yes, tested against Workday, Greenhouse, Lever, Taleo and more.'],
-    ['What payment methods?','Cards, UPI, PayPal and more via Lemon Squeezy. All payments secure and encrypted.'],
+    ['What payment methods?','Cards, UPI, Net Banking and more via Cashfree. All payments secure and encrypted.'],
   ];
 </script>
 <svelte:head><title>FAQ – Premium Templates</title></svelte:head>
@@ -36,6 +36,6 @@
   </div>
   <div class="mt-16 card p-8 text-center">
     <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700" class="mb-3">Still have questions?</h3>
-    <a href="mailto:support@freeresumebuilder.co" class="btn btn-gold">📧 Email Support</a>
+    <a href="mailto:support@vizanlabs.com" class="btn btn-gold">📧 Email Support</a>
   </div>
 </div>

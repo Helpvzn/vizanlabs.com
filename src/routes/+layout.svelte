@@ -33,14 +33,9 @@
   onMount(() => {
     const fn = () => scrolled = window.scrollY > 20;
     window.addEventListener('scroll', fn, { passive: true });
-    // Load Lemon Squeezy overlay
-    const s = document.createElement('script');
-    s.src = 'https://app.lemonsqueezy.com/js/lemon.js';
-    s.defer = true;
-    s.onload = () => window.createLemonSqueezy?.();
-    document.head.appendChild(s);
     return () => window.removeEventListener('scroll', fn);
   });
+
 
 
   $: isActive = (href) => $page.url.pathname === href || ($page.url.pathname.startsWith(href + '/') && href !== '/');

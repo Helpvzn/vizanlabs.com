@@ -78,7 +78,6 @@ collections:
         widget: list
         required: false
         field: { label: Image, name: image, widget: image, media_folder: "/static/uploads/products", public_folder: "/uploads/products" }
-      - { label: "Lemon Squeezy Checkout Link", name: buyUrl, widget: string, required: false, hint: "Paste the full LS checkout link: https://freeresumebuilder.lemonsqueezy.com/checkout/buy/..." }
       - { label: "💳 Cashfree Payment Link", name: cashfreePaymentLink, widget: string, required: false, hint: "Paste your Cashfree payment link: https://payments.cashfree.com/links?code=..." }
       - { label: "📄 PDF File Key (R2 Bucket)", name: pdfR2Key, widget: string, required: false, hint: "Sirf PDF ka naam likho jo R2 bucket mein upload hai, e.g. shiv-puran.pdf" }
       - { label: "Free Preview File URL (R2)", name: previewFileUrl, widget: string, required: false, hint: "R2 link for free sample download" }

@@ -16,10 +16,10 @@
     <div class="text-6xl">✉️</div>
     <div>
       <p class="text-sm mb-2 uppercase tracking-widest font-medium" style="color:var(--text-3)">Support Email</p>
-      <a href="mailto:support@freeresumebuilder.co"
+      <a href="mailto:support@vizanlabs.com"
         class="text-xl font-bold hover:text-[var(--gold)] transition-colors"
         style="color:var(--gold)">
-        support@freeresumebuilder.co
+        support@vizanlabs.com
       </a>
     </div>
     <div class="divider"></div>
@@ -35,7 +35,7 @@
         <div class="font-medium">Mon–Fri, 9am–6pm IST</div>
       </div>
     </div>
-    <a href="mailto:support@freeresumebuilder.co" class="btn btn-gold w-full justify-center py-4 text-base font-bold">
+    <a href="mailto:support@vizanlabs.com" class="btn btn-gold w-full justify-center py-4 text-base font-bold">
       Send us an Email →
     </a>
   </div>
