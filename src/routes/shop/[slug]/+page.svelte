@@ -14,13 +14,19 @@
   let imgIdx = 0;
   let tab = 'description';
 
-  const fmt = v => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(v);
+  // Use INR for Cashfree products, USD for Lemon Squeezy
+  $: fmt = (v) => p?.cashfreePaymentLink
+    ? new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v)
+    : new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(v);
 
   function buyNow() {
-    if (p.buyUrl) {
+    if (p.cashfreePaymentLink) {
+      // Cashfree Payment Link — opens in same tab so return URL redirect works
+      window.location.href = p.cashfreePaymentLink;
+    } else if (p.buyUrl) {
       window.open(p.buyUrl, '_blank');
     } else {
-       alert("Checkout link not set in CMS.");
+      alert('Checkout link not set in CMS. Please add a Cashfree Payment Link.');
     }
   }
 </script>
@@ -119,8 +125,13 @@
 
       <!-- Trust -->
       <div class="flex flex-wrap gap-4 text-xs font-medium uppercase tracking-wider" style="color:var(--text-3)">
-        <span class="flex items-center gap-1.5">Secure via Lemon Squeezy</span>
-        <span class="flex items-center gap-1.5">License by email</span>
+        {#if p.cashfreePaymentLink}
+          <span class="flex items-center gap-1.5">🔒 Secure via Cashfree</span>
+          <span class="flex items-center gap-1.5">⚡ Instant Download</span>
+        {:else}
+          <span class="flex items-center gap-1.5">Secure via Lemon Squeezy</span>
+          <span class="flex items-center gap-1.5">License by email</span>
+        {/if}
       </div>
     </div>
   </div>
