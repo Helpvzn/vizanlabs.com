@@ -37,7 +37,9 @@ export async function GET({ url, platform }) {
       return errorPage(500, 'Server Error', 'PDF storage not configured. Contact support.');
     }
 
-    const object = await env.PDF_BUCKET.get(record.pdfR2Key);
+    const pdfKey = record.pdfR2Key || record.pdfKey || '';
+    console.log('Fetching from R2:', pdfKey);
+    const object = await env.PDF_BUCKET.get(pdfKey);
 
     if (!object) {
       console.error(`PDF not found in R2: ${record.pdfR2Key}`);
