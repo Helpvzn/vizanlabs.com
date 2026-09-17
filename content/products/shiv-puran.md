@@ -1,23 +1,27 @@
 ---
-title: "Shiv Puran - Mahadev Ki Divya Kathayein, Rahasya Aur Mahima"
+title: Shiv Puran - Mahadev Ki Divya Kathayein, Rahasya Aur Mahima
 slug: shiv-puran
 category: Dharmik Books PDF
 price: 39
 originalPrice: 99
-shortDescription: "Shiv Puran ki sampurn divya kathayein, Mahadev ke rahasya, mahima aur adhyatmik gyan ek PDF mein."
+shortDescription: Shiv Puran ki sampurn divya kathayein, Mahadev ke rahasya, mahima aur adhyatmik gyan ek PDF mein.
+thumbnail: ''
+imageAspectRatio: 3/4
+gallery: []
+cashfreePaymentLink: https://payments.cashfree.com/links?code=pb0u0v2mp4n0_AAAAAAAVltA
+pdfR2Key: poranik katha/शिव पुराण (2).pdf
+previewFileUrl: ''
 fileFormat: PDF
-fileSize: "12 MB"
-badge: bestseller
-featured: true
-published: true
-cashfreePaymentLink: "https://payments.cashfree.com/links?code=pb0u0v2mp4n0_AAAAAAAVltA"
-pdfR2Key: "shiv-puran.pdf"
+fileSize: 12 MB
 requirements:
   - Koi bhi PDF reader (Adobe, mobile default reader)
   - Mobile, tablet ya computer sab pe chalega
-seoTitle: "Shiv Puran PDF Download Hindi - Mahadev Ki Divya Kathayein | Vizan Labs"
-seoDescription: "Sampurn Shiv Puran PDF Hindi mein - Mahadev ki divya kathayein, rahasya, mahima aur adhyatmik gyan. Sirf ₹39 mein instant download."
-createdAt: "2026-09-17"
+badge: bestseller
+featured: true
+published: true
+seoTitle: Shiv Puran PDF Download Hindi - Mahadev Ki Divya Kathayein | Vizan Labs
+seoDescription: Sampurn Shiv Puran PDF Hindi mein - Mahadev ki divya kathayein, rahasya, mahima aur adhyatmik gyan. Sirf ₹39 mein instant download.
+createdAt: 2026-09-17
 ---
 
 ## Shiv Puran ke baare mein
