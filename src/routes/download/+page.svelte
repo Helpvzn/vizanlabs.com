@@ -11,7 +11,7 @@
   let productId = '';
   let pollCount = 0;
   let pollInterval = null;
-  const MAX_POLLS = 20; // 20 × 2s = 40 seconds
+  const MAX_POLLS = 45; // 45 × 2s = 90 seconds
 
   async function checkStatus() {
     if (!orderId) {
@@ -101,6 +101,11 @@
         <p class="text-xs" style="color:var(--text-3)">
           🔒 Do not close this tab · Verifying securely…
         </p>
+        {#if orderId}
+          <p class="text-xs font-mono" style="color:var(--text-3);word-break:break-all">
+            Order: {orderId.slice(0, 30)}…
+          </p>
+        {/if}
       </div>
 
     <!-- ═══ VERIFIED: Show download button ═══ -->
