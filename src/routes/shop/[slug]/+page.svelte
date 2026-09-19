@@ -5,10 +5,11 @@
   $: p = data.product;
   $: html = p?.body ? marked(p.body) : '';
   
-  // Safe extraction of gallery images (handles both direct strings and objects with 'image' key)
+  // Safe extraction of gallery images (handles string '[]' from YAML parser edge case)
+  $: gallery = Array.isArray(p?.gallery) ? p.gallery : [];
   $: imgs = [
-    p?.thumbnail, 
-    ...(p?.gallery || []).map(item => typeof item === 'string' ? item : item.image)
+    p?.thumbnail,
+    ...gallery.map(item => typeof item === 'string' ? item : item?.image)
   ].filter(Boolean);
 
   let imgIdx = 0;

@@ -93,8 +93,11 @@ function parseYaml(yaml) {
 function parseScalar(val) {
   const v = (val || '').trim();
   if (!v || v === "''") return '';
+  if (v === '[]') return [];           // empty array literal
+  if (v === '{}') return {};           // empty object literal
   if (v === 'true') return true;
   if (v === 'false') return false;
+  if (v === 'null' || v === '~') return null;
   if (v.startsWith("'") && v.endsWith("'")) return v.slice(1, -1);
   if (v.startsWith('"') && v.endsWith('"')) return v.slice(1, -1);
   if (v !== '' && !isNaN(v)) return Number(v);
