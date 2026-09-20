@@ -59,9 +59,6 @@ export async function GET({ url, platform }) {
         console.log('Cashfree order status:', order.order_status, 'for', orderId);
 
         if (order.order_status === 'PAID') {
-          // Extract link code from order_id: CFPay_<linkCode>_0c90_xxx
-          const linkCode = orderId.replace('CFPay_', '').split('_0c')[0] || '';
-
           // Find product from catalog
           let pdfR2Key  = '';
           let productId = '';
@@ -69,9 +66,18 @@ export async function GET({ url, platform }) {
             const catalogRes = await fetch(`${url.origin}/api/products-catalog`);
             if (catalogRes.ok) {
               const catalog = await catalogRes.json();
-              const product = catalog.find(p =>
-                p.cashfreePaymentLink && linkCode && p.cashfreePaymentLink.includes(linkCode)
-              );
+              
+              let product;
+              if (orderId.startsWith('VZN_')) {
+                // New format: VZN_productSlug_timestamp
+                const slug = orderId.split('_')[1];
+                product = catalog.find(p => p.slug === slug);
+              } else {
+                // Old format: CFPay_<linkCode>_0c90_xxx
+                const linkCode = orderId.replace('CFPay_', '').split('_0c')[0] || '';
+                product = catalog.find(p => p.cashfreePaymentLink && linkCode && p.cashfreePaymentLink.includes(linkCode));
+              }
+
               if (product) {
                 pdfR2Key  = product.pdfR2Key || '';
                 productId = product.slug || '';
