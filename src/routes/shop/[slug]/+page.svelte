@@ -20,14 +20,49 @@
     ? new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v)
     : new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(v);
 
-  function buyNow() {
-    if (p.cashfreePaymentLink) {
-      // Cashfree Payment Link — opens in same tab so return URL redirect works
-      window.location.href = p.cashfreePaymentLink;
-    } else if (p.buyUrl) {
-      window.open(p.buyUrl, '_blank');
-    } else {
-      alert('Checkout link not set in CMS. Please add a Cashfree Payment Link.');
+  // Checkout state
+  let showModal = false;
+  let phone = '';
+  let name = '';
+  let buying = false;
+  let buyError = '';
+
+  async function buyNow() {
+    if (!p.cashfreePaymentLink && !p.pdfR2Key) {
+      alert('Checkout not configured. Contact support.');
+      return;
+    }
+    showModal = true;
+    buyError = '';
+  }
+
+  async function submitCheckout() {
+    if (!phone || phone.replace(/\D/g,'').length < 10) {
+      buyError = 'Valid 10-digit phone number required.';
+      return;
+    }
+    buying = true;
+    buyError = '';
+    try {
+      const res = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productSlug: p.slug,
+          customerPhone: phone,
+          customerName: name || 'Customer'
+        })
+      });
+      const data = await res.json();
+      if (data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else {
+        buyError = data.error || 'Something went wrong. Please try again.';
+        buying = false;
+      }
+    } catch (e) {
+      buyError = 'Network error. Please try again.';
+      buying = false;
     }
   }
 </script>
@@ -163,12 +198,47 @@
 </div>
 {/if}
 
+<!-- ═══ CHECKOUT MODAL ═══ -->
+{#if showModal}
+  <div class="fixed inset-0 z-50 flex items-center justify-center px-4"
+    style="background:rgba(0,0,0,0.75);backdrop-filter:blur(4px)"
+    on:click|self={() => { showModal = false; buying = false; }}>
+    <div class="card p-8 w-full max-w-sm space-y-5" style="border:1px solid var(--gold)">
+      <div class="flex items-center justify-between">
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700">Checkout</h2>
+        <button on:click={() => { showModal = false; buying = false; }} class="text-2xl" style="color:var(--text-3)">×</button>
+      </div>
+      <div class="text-sm p-3 rounded-lg" style="background:var(--border)">
+        <div class="font-bold">{p.title}</div>
+        <div style="color:var(--gold);font-size:1.2rem;font-weight:700">{fmt(p.price)}</div>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label class="text-xs font-medium block mb-1" style="color:var(--text-3)">Your Name (optional)</label>
+          <input bind:value={name} type="text" placeholder="Rahul Sharma"
+            class="w-full px-4 py-2.5 rounded-lg text-sm outline-none"
+            style="background:var(--border);border:1px solid var(--border);color:inherit" />
+        </div>
+        <div>
+          <label class="text-xs font-medium block mb-1" style="color:var(--text-3)">Mobile Number <span style="color:var(--gold)">*</span></label>
+          <input bind:value={phone} type="tel" placeholder="10-digit mobile number" maxlength="10"
+            class="w-full px-4 py-2.5 rounded-lg text-sm outline-none"
+            style="background:var(--border);border:1px solid {buyError ? '#ef4444' : 'var(--border)'};color:inherit"
+            on:keydown={(e) => e.key === 'Enter' && submitCheckout()} />
+          {#if buyError}<p class="text-xs mt-1" style="color:#ef4444">{buyError}</p>{/if}
+        </div>
+      </div>
+      <button on:click={submitCheckout} disabled={buying}
+        class="btn btn-gold w-full justify-center py-3.5 text-base font-bold"
+        style={buying ? 'opacity:0.7;cursor:not-allowed' : ''}>
+        {buying ? '⏳ Redirecting…' : `Pay ${fmt(p.price)} →`}
+      </button>
+      <p class="text-center text-xs" style="color:var(--text-3)">🔒 Secure payment via Cashfree · Instant PDF</p>
+    </div>
+  </div>
+{/if}
+
 <style>
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
