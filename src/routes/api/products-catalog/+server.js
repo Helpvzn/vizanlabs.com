@@ -15,6 +15,7 @@ export async function GET() {
     .map(p => ({
       slug: p.slug,
       title: p.title,
+      price: p.price,
       cashfreePaymentLink: p.cashfreePaymentLink,
       pdfR2Key: p.pdfR2Key
     }));
