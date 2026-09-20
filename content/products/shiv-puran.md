@@ -2,7 +2,7 @@
 title: Shiv Puran - Mahadev Ki Divya Kathayein, Rahasya Aur Mahima
 slug: shiv-puran
 category: Dharmik Books PDF
-price: 39
+price: 11
 originalPrice: 99
 shortDescription: Shiv Puran ki sampurn divya kathayein, Mahadev ke rahasya, mahima aur adhyatmik gyan ek PDF mein.
 thumbnail: ''
