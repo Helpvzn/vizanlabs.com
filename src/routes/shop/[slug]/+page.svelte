@@ -1,6 +1,8 @@
 <script>
   import { marked } from 'marked';
 
+  import { onMount } from 'svelte';
+
   export let data;
   $: p = data.product;
   $: html = p?.body ? marked(p.body) : '';
@@ -14,6 +16,17 @@
 
   let imgIdx = 0;
   let tab = 'description';
+
+  let cashfree;
+  onMount(() => {
+    const script = document.createElement('script');
+    script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
+    script.onload = () => {
+      // Use production mode for live payments
+      cashfree = Cashfree({ mode: "production" });
+    };
+    document.head.appendChild(script);
+  });
 
   // Use INR for Cashfree products, USD for Lemon Squeezy
   $: fmt = (v) => p?.cashfreePaymentLink
@@ -54,8 +67,17 @@
         })
       });
       const data = await res.json();
-      if (data.checkoutUrl) {
-        window.location.href = data.checkoutUrl;
+      if (data.paymentSessionId) {
+        if (!cashfree) {
+          buyError = 'Payment system loading... Please try again in a second.';
+          buying = false;
+          return;
+        }
+        // Use official Cashfree SDK to open checkout
+        cashfree.checkout({
+          paymentSessionId: data.paymentSessionId,
+          redirectTarget: "_self"
+        });
       } else {
         buyError = data.error || 'Something went wrong. Please try again.';
         buying = false;
