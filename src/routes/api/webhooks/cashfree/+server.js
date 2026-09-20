@@ -105,12 +105,21 @@ export async function POST({ request, platform }) {
       const res = await fetch(`${origin}/api/products-catalog`);
       if (res.ok) {
         const catalog = await res.json();
-        const product = catalog.find(p =>
-          p.cashfreePaymentLink && (
-            (extractedLinkCode && p.cashfreePaymentLink.includes(extractedLinkCode)) ||
-            (linkId && p.cashfreePaymentLink.includes(linkId))
-          )
-        );
+        
+        let product;
+        if (realOrderId.startsWith('VZN_')) {
+          // New Orders API format: VZN_productSlug_timestamp
+          const slug = realOrderId.split('_')[1];
+          product = catalog.find(p => p.slug === slug);
+        } else {
+          // Old Payment Link format
+          product = catalog.find(p =>
+            p.cashfreePaymentLink && (
+              (extractedLinkCode && p.cashfreePaymentLink.includes(extractedLinkCode)) ||
+              (linkId && p.cashfreePaymentLink.includes(linkId))
+            )
+          );
+        }
         if (product) {
           pdfR2Key  = product.pdfR2Key;
           productId = product.slug;
